@@ -8,7 +8,8 @@ ToDoアプリとか作ってみよーかな、考えやすいし。
 
 ## 環境設定
 
-IntelliJ IDEA を使用。
+IntelliJ IDEA を使用。  
+Git操作はIntelliJ外でやることを想定している。  
 以下手順を行えばIntelliJ上で読み書きできるようになる、はず。
 
 1. リポジトリをClone
