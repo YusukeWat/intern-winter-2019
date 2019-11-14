@@ -11,7 +11,6 @@ public class CloseWindow extends SimpleWindow {
 
     @Override
     protected void addComponent() {
-
         // -------- ラベルの設定 --------
         // 文字列を中央に配置したいので、パネルの真ん中に一旦追加する
         JPanel panelL = new JPanel();

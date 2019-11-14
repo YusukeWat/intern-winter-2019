@@ -13,7 +13,6 @@ public class HelpMenu extends OriginalMenu {
 
     @Override
     public void setupInternal() {
-
         // 「アプリ について」アイテムを登録する
         registerItem(Item.ABOUT.getKey(), Item.ABOUT.getTitle(), actionEvent ->
                 // アプリバージョンを表示するだけのシンプルなウィンドウを表示する
