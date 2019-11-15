@@ -1,8 +1,12 @@
 package app.ui.menu;
 
 import app.App;
-import app.ui.simple.SimpleWindowManager;
+import app.ui.simple.WindowFactory;
+import app.ui.simple.WindowFactoryCreator;
 
+/**
+ * 「ヘルプ」メニュー
+ */
 public class HelpMenu extends OriginalMenu {
 
     public static final String TITLE = "ヘルプ";
@@ -14,10 +18,11 @@ public class HelpMenu extends OriginalMenu {
     @Override
     public void setupInternal() {
         // 「アプリ について」アイテムを登録する
-        registerItem(Item.ABOUT.getKey(), Item.ABOUT.getTitle(), actionEvent ->
-                // アプリバージョンを表示するだけのシンプルなウィンドウを表示する
-                new SimpleWindowManager().displayOf(SimpleWindowManager.WindowType.ABOUT)
-        );
+        registerItem(Item.ABOUT.getKey(), Item.ABOUT.getTitle(), actionEvent -> {
+            // アプリバージョンを表示するだけのシンプルなウィンドウを表示する
+            WindowFactory factory = WindowFactoryCreator.createFactoryOf("about");
+            factory.getWindow().display();
+        });
     }
 
     public enum Item {

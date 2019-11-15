@@ -5,15 +5,17 @@ import app.App;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * アプリのバージョン情報を表示するウィンドウ
+ */
 public class AboutWindow extends SimpleWindow {
-
-    private final JLabel mLabel = new JLabel(String.format("アプリのバージョン：%s", App.APP_VERSION));
 
     @Override
     protected void addComponent() {
+        JLabel label = new JLabel(String.format("アプリのバージョン：%s", App.APP_VERSION));
         // 文字列を中央に配置したいので、パネルの真ん中に一旦追加する
         JPanel panel = new JPanel();
-        panel.add(mLabel, BorderLayout.CENTER);
+        panel.add(label, BorderLayout.CENTER);
 
         getContentPane().add(panel, BorderLayout.CENTER);
     }

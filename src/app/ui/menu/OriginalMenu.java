@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * JMenuクラスに、配置するアイテムの情報を持たせたクラス
+ */
 public abstract class OriginalMenu extends JMenu {
 
     private final Map<String, JMenuItem> mItemMap = new HashMap<>();
