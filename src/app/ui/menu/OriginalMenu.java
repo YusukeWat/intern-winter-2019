@@ -19,17 +19,13 @@ public abstract class OriginalMenu extends JMenu {
 
     protected abstract void setupInternal();
 
-    protected JMenuItem registerItem(String itemKey, String title, ActionListener actionListener) {
+    protected final JMenuItem registerItem(String itemKey, String title, ActionListener actionListener) {
         JMenuItem item = new JMenuItem(title);
         item.addActionListener(actionListener);
         add(item);
-        putItem(itemKey, item);
+        mItemMap.put(itemKey, item);
 
         return item;
-    }
-
-    private void putItem(String key, JMenuItem item) {
-        mItemMap.put(key, item);
     }
 
     public void setEnabledOf(String itemKey, boolean enabled) {

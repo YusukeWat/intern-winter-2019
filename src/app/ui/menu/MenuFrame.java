@@ -15,18 +15,16 @@ public class MenuFrame extends JFrame {
         }
     };
 
-    public MenuFrame(String title) {
-        super(title);
+    public MenuFrame() {
         // メニューバーをフレームに設置する
         setJMenuBar(mMenuBar);
         // メニューバーに各メニューを追加する
-        // 備忘録：keyの昇順にループが回る
         for (OriginalMenu menu : mMenuMap.values()) {
             mMenuBar.add(menu);
         }
     }
 
-    public OriginalMenu getMenu(String key) {
+    public final OriginalMenu getMenu(String key) {
         return mMenuMap.get(key);
     }
 }

@@ -16,7 +16,7 @@ public class HelpMenu extends OriginalMenu {
     }
 
     @Override
-    public void setupInternal() {
+    protected final void setupInternal() {
         // 「アプリ について」アイテムを登録する
         registerItem(Item.ABOUT.getKey(), Item.ABOUT.getTitle(), actionEvent -> {
             // アプリバージョンを表示するだけのシンプルなウィンドウを表示する
@@ -26,7 +26,7 @@ public class HelpMenu extends OriginalMenu {
     }
 
     public enum Item {
-        ABOUT("item_about", String.format("%s について", App.APP_NAME));
+        ABOUT("item_about", String.format("%s について", App.NAME));
 
         private String key;
         private String title;

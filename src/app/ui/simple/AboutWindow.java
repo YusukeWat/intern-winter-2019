@@ -12,7 +12,7 @@ public class AboutWindow extends SimpleWindow {
 
     @Override
     protected void addComponent() {
-        JLabel label = new JLabel(String.format("アプリのバージョン：%s", App.APP_VERSION));
+        JLabel label = new JLabel(String.format("アプリのバージョン：%s", App.VERSION));
         // 文字列を中央に配置したいので、パネルの真ん中に一旦追加する
         JPanel panel = new JPanel();
         panel.add(label, BorderLayout.CENTER);

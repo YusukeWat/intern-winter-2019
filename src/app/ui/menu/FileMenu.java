@@ -16,7 +16,7 @@ public class FileMenu extends OriginalMenu {
     }
 
     @Override
-    public void setupInternal() {
+    protected final void setupInternal() {
         // 「アプリ を終了する」アイテムを登録する
         registerItem(Item.CLOSE.getKey(), Item.CLOSE.getTitle(), actionEvent -> {
             // アプリを終了するか聞くだけのシンプルなウィンドウを表示する
@@ -29,7 +29,7 @@ public class FileMenu extends OriginalMenu {
      * メニューが保持するアイテムの一覧
      */
     public enum Item {
-        CLOSE("item_close", String.format("%s を終了する", App.APP_NAME));
+        CLOSE("item_close", String.format("%s を終了する", App.NAME));
 
         private String key;
         private String title;
