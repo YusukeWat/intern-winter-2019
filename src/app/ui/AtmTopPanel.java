@@ -10,7 +10,7 @@ public class AtmTopPanel extends JPanel {
     private static final String DEPOSIT_TITLE = "お預かり";
     private static final String INQUIRY_TITLE = "残高照会";
     private static final String TRANSFER_TITLE = "お振込み";
-    private static final String TOP_WOMAN_PATH = "./res/top_woman.png";
+    private static final String TOP_WOMAN_PATH = "./res/image/top_woman.png";
 
     public AtmTopPanel() {
         // このパネル自体のレイアウトを設定する
