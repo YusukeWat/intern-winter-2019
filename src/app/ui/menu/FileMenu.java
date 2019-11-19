@@ -1,6 +1,6 @@
 package app.ui.menu;
 
-import app.App;
+import app.Application;
 import app.ui.simple.WindowFactory;
 import app.ui.simple.WindowFactoryCreator;
 
@@ -29,7 +29,7 @@ public class FileMenu extends OriginalMenu {
      * メニューが保持するアイテムの一覧
      */
     public enum Item {
-        CLOSE("item_close", String.format("%s を終了する", App.NAME));
+        CLOSE("item_close", String.format("%s を終了する", Application.NAME));
 
         private String key;
         private String title;
@@ -41,6 +41,7 @@ public class FileMenu extends OriginalMenu {
 
         /**
          * アイテムのキー値を取得する
+         *
          * @return キー値
          */
         public String getKey() {

@@ -6,10 +6,10 @@ import java.awt.*;
 /**
  * アプリを終了確認するウィンドウ
  */
-public class CloseWindow extends SimpleWindow {
+class CloseWindow extends SimpleWindow {
 
     @Override
-    protected void addComponent() {
+    protected final void addComponent() {
         // -------- ラベルの設定 --------
         JLabel label = new JLabel("アプリを終了します");
         // 文字列を中央に配置したいので、パネルの真ん中に一旦追加する

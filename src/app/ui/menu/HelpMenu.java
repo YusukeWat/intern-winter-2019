@@ -1,6 +1,6 @@
 package app.ui.menu;
 
-import app.App;
+import app.Application;
 import app.ui.simple.WindowFactory;
 import app.ui.simple.WindowFactoryCreator;
 
@@ -26,7 +26,7 @@ public class HelpMenu extends OriginalMenu {
     }
 
     public enum Item {
-        ABOUT("item_about", String.format("%s について", App.NAME));
+        ABOUT("item_about", String.format("%s について", Application.NAME));
 
         private String key;
         private String title;

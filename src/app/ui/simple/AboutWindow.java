@@ -1,6 +1,6 @@
 package app.ui.simple;
 
-import app.App;
+import app.Application;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,11 +8,11 @@ import java.awt.*;
 /**
  * アプリのバージョン情報を表示するウィンドウ
  */
-public class AboutWindow extends SimpleWindow {
+class AboutWindow extends SimpleWindow {
 
     @Override
-    protected void addComponent() {
-        JLabel label = new JLabel(String.format("アプリのバージョン：%s", App.VERSION));
+    protected final void addComponent() {
+        JLabel label = new JLabel(String.format("アプリのバージョン：%s", Application.VERSION));
         // 文字列を中央に配置したいので、パネルの真ん中に一旦追加する
         JPanel panel = new JPanel();
         panel.add(label, BorderLayout.CENTER);
