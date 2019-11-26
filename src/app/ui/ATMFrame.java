@@ -24,8 +24,8 @@ public class ATMFrame extends MenuFrame implements ActionListenerRelay.ATMAction
     private JPanel mMainPanel = new JPanel();
     private CardLayout mLayout = new CardLayout();
 
-    private AuthPanel authPanel;
-    private TransactionPanel transactionPanel;
+    private AuthPanel mAuthPanel;
+    private TransactionPanel mTransactionPanel;
 
     public ATMFrame() {
         setTitle(Application.NAME);
@@ -50,14 +50,14 @@ public class ATMFrame extends MenuFrame implements ActionListenerRelay.ATMAction
         // トップ画面
         TopPanel topPanel = new TopPanel(actionListenerRelay);
         // 認証画面
-        authPanel = new AuthPanel(actionListenerRelay);
+        mAuthPanel = new AuthPanel(actionListenerRelay);
         // 取引画面
-        transactionPanel = new TransactionPanel(actionListenerRelay);
+        mTransactionPanel = new TransactionPanel(actionListenerRelay);
 
         // メインパネルに各画面パネルを追加
         mMainPanel.add(topPanel, TopPanel.TAG);
-        mMainPanel.add(authPanel, AuthPanel.TAG);
-        mMainPanel.add(transactionPanel, TransactionPanel.TAG);
+        mMainPanel.add(mAuthPanel, AuthPanel.TAG);
+        mMainPanel.add(mTransactionPanel, TransactionPanel.TAG);
         // トップ画面を表示
         mLayout.show(mMainPanel, TopPanel.TAG);
     }
@@ -73,7 +73,7 @@ public class ATMFrame extends MenuFrame implements ActionListenerRelay.ATMAction
                 break;
             case NonTopPanel.POSITIVE_BUTTON_TAG:
                 if (actionPanelTag.equals(AuthPanel.TAG)) {
-                    transactionPanel.setUsername(authPanel.getUsername());
+                    mTransactionPanel.setUsername(mAuthPanel.getUsername());
                     mLayout.show(mMainPanel, TransactionPanel.TAG);
                 } else {
                     mLayout.show(mMainPanel, TopPanel.TAG);

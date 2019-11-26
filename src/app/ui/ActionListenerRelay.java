@@ -10,13 +10,13 @@ import java.awt.event.ActionListener;
 
 public class ActionListenerRelay implements ActionListener {
 
-    private ATMActionListener listener;
+    private ATMActionListener mListener;
     // トップ以外の画面で押されたとき、
     // どのATMアクションでの行動かを覚えておくためにメンバ変数で状態保持
     private ATMActionType mActionType = null;
 
     public ActionListenerRelay(ATMActionListener listener) {
-        this.listener = listener;
+        this.mListener = listener;
     }
 
     /**
@@ -67,7 +67,7 @@ public class ActionListenerRelay implements ActionListener {
      * @param buttonType     押されたボタンの種類
      */
     private void callbackATMActionListener(String actionPanelTag, ATMActionType actionType, String buttonType) {
-        if (listener == null) {
+        if (mListener == null) {
             return;
         }
 
@@ -75,7 +75,7 @@ public class ActionListenerRelay implements ActionListener {
             return;
         }
 
-        listener.onATMAction(actionPanelTag, actionType, buttonType);
+        mListener.onATMAction(actionPanelTag, actionType, buttonType);
     }
 
     /**

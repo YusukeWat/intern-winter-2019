@@ -17,6 +17,6 @@ class AboutWindow extends SimpleWindow {
         JPanel panel = new JPanel();
         panel.add(label, BorderLayout.CENTER);
 
-        getContentPane().add(panel, BorderLayout.CENTER);
+        add(panel, BorderLayout.CENTER);
     }
 }
