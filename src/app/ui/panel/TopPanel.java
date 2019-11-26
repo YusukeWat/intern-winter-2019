@@ -20,10 +20,10 @@ public class TopPanel extends JPanel {
     private static final String TOP_WOMAN_PATH = "./res/image/top_woman.png";
 
     // トップ画面のボタンが押された時に利用元に通知するためのリスナークラス
-    private ActionListener listener;
+    private ActionListener mListener;
 
     public TopPanel(ActionListener listener) {
-        this.listener = listener;
+        this.mListener = listener;
         // このパネル自体のレイアウトを設定する
         // 画面を 左、中央、右 に3分割する
         setLayout(new GridLayout(1, 3));
@@ -129,7 +129,7 @@ public class TopPanel extends JPanel {
         // ボタンの文字のフォントを設定する
         button.setFont(ATMFrame.BUTTON_FONT);
         // ボタンを押した時の処理を設定する
-        button.addActionListener(listener);
+        button.addActionListener(mListener);
         button.setActionCommand(TAG + type.toString());
 
         return button;
