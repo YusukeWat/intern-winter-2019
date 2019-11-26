@@ -1,6 +1,6 @@
 package app;
 
-import app.ui.AppFrame;
+import app.ui.ATMFrame;
 
 import javax.swing.*;
 
@@ -20,7 +20,7 @@ public class Application {
 //        p0 = new AuthPanel();
 //        frame.add(p0);
 
-        JFrame frame = new AppFrame();
+        JFrame frame = new ATMFrame();
 
         frame.setVisible(true);
     }

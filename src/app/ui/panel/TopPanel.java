@@ -1,14 +1,21 @@
-package app.ui;
+package app.ui.panel;
 
+import app.ATMActionType;
 import app.Application;
+import app.ui.ATMFrame;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * アプリのトップ画面
+ * ATMで行う行動を選択できる
+ */
 public class TopPanel extends JPanel {
 
     public static final String TAG = TopPanel.class.getSimpleName();
+    public static final String BUTTON_TAG = ".top";
     // トップ画像のパス文字列
     private static final String TOP_WOMAN_PATH = "./res/image/top_woman.png";
 
@@ -58,12 +65,12 @@ public class TopPanel extends JPanel {
      * @return コンポーネントを追加したパネル
      */
     private JPanel addLeftComponent(JPanel panel) {
-        // バグのヒント
+        // バグ埋めのヒント
 //        panel = new JPanel();
         // お引出しボタンを定義する
-        JButton buttonWithdraw = createTopButton(ButtonType.WITHDRAW.title);
+        JButton buttonWithdraw = createTopButton(ATMActionType.WITHDRAW);
         // 残高照会ボタンを定義する
-        JButton buttonInquiry = createTopButton(ButtonType.INQUIRY.title);
+        JButton buttonInquiry = createTopButton(ATMActionType.INQUIRY);
 
         // パネルに上記コンポーネントを追加する
         panel.add(buttonWithdraw);
@@ -80,9 +87,9 @@ public class TopPanel extends JPanel {
      */
     private JPanel addCenterComponent(JPanel panel) {
         // お預かりボタンを定義する
-        JButton buttonDeposit = createTopButton(ButtonType.DEPOSIT.title);
+        JButton buttonDeposit = createTopButton(ATMActionType.DEPOSIT);
         // お振込みボタンを定義する
-        JButton buttonTransfer = createTopButton(ButtonType.TRANSFER.title);
+        JButton buttonTransfer = createTopButton(ATMActionType.TRANSFER);
 
         // パネルに上記コンポーネントを追加する
         panel.add(buttonDeposit);
@@ -114,52 +121,26 @@ public class TopPanel extends JPanel {
     /**
      * トップ画面に配置するボタンを生成する
      *
-     * @param title ボタンのタイトル
+     * @param type ボタンの種類
      * @return トップ画面に配置するボタン
      */
-    private JButton createTopButton(final String title) {
-        JButton button = new JButton(title);
+    private JButton createTopButton(ATMActionType type) {
+        JButton button = new JButton(type.getButtonTitle());
         // ボタンの文字のフォントを設定する
-        button.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 24));
+        button.setFont(ATMFrame.BUTTON_FONT);
         // ボタンを押した時の処理を設定する
         button.addActionListener(listener);
-        button.setActionCommand(ButtonType.of(title).toString());
+        button.setActionCommand(TAG + type.toString());
 
         return button;
     }
 
     /**
-     * トップ画面を3分割した時のそれぞれの位置
+     * トップ画面を縦に3分割した時のそれぞれの位置
      */
     private enum Position {
         LEFT,
         CENTER,
         RIGHT
-    }
-
-    /**
-     * トップ画面のボタンの種類
-     */
-    public enum ButtonType {
-        WITHDRAW("お引出し"),
-        DEPOSIT("お預かり"),
-        INQUIRY("残高照会"),
-        TRANSFER("お振込み");
-
-        private final String title;
-
-        ButtonType(String title) {
-            this.title = title;
-        }
-
-        public static ButtonType of(String title) {
-            for (ButtonType type : ButtonType.values()) {
-                // 引数とenum型の文字列部分を比較します。
-                if (title.equals(type.title)) {
-                    return type;
-                }
-            }
-            return null;
-        }
     }
 }
