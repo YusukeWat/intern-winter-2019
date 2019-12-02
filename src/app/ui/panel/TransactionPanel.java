@@ -12,6 +12,8 @@ public class TransactionPanel extends NonTopPanel {
 
     // ユーザ名を表示するラベル
     private JLabel mUsernameLabel;
+    // 取引額を入力するフィールド
+    private JTextField mTransactionField;
 
     /**
      * コンストラクタ
@@ -30,9 +32,7 @@ public class TransactionPanel extends NonTopPanel {
         JLabel welcomeLabel = new JLabel("ようこそ");
         welcomeLabel.setBounds(250, 150, 60, 20);
 
-        // usernameLabelだけメンバ変数...なぜ？
-        //   -> 外からユーザ名文字列を受けて、表記を変更したいから
-        mUsernameLabel = new JLabel("ユーザ名");
+        mUsernameLabel = new JLabel("ユーザー名");
         mUsernameLabel.setBounds(340, 150, 120, 20);
 
         JLabel honorificLabel = new JLabel("様");
@@ -41,8 +41,8 @@ public class TransactionPanel extends NonTopPanel {
         JLabel transactionLabel = new JLabel("お取引額");
         transactionLabel.setBounds(240, 250, 80, 20);
 
-        JTextField transactionField = new JTextField(20);
-        transactionField.setBounds(330, 245, 150, 30);
+        mTransactionField = new JTextField(20);
+        mTransactionField.setBounds(330, 245, 150, 30);
 
         JLabel unitLabel = new JLabel("円");
         unitLabel.setBounds(500, 250, 30, 20);
@@ -51,16 +51,53 @@ public class TransactionPanel extends NonTopPanel {
         add(mUsernameLabel);
         add(honorificLabel);
         add(transactionLabel);
-        add(transactionField);
+        add(mTransactionField);
         add(unitLabel);
     }
 
+    @Override
+    public void clear() {
+        mUsernameLabel.setText("ユーザー名");
+        mTransactionField.setText("");
+    }
+
     /**
-     * 取引を行うユーザ名をセットする
+     * 取引を行うユーザー名をセットする
      *
-     * @param username 取引を行うユーザ名をセットする
+     * @param username 取引を行うユーザー名をセットする
      */
     public void setUsername(String username) {
         this.mUsernameLabel.setText(username);
+    }
+
+    /**
+     * 取引を行うユーザー名を取得する
+     *
+     * @return 取引を行うユーザー名
+     */
+    public String getUsername() {
+        return mUsernameLabel.getText();
+    }
+
+    /**
+     * 入力された取引額を取得する
+     *
+     * @return 入力された取引額
+     */
+    public int getInputAmount() {
+        try {
+            int input = Integer.parseInt(mTransactionField.getText());
+
+            // 負の数だった場合は0とみなす
+            if (input < 0) {
+                return 0;
+            }
+
+            return input;
+
+        } catch (NumberFormatException e) {
+            // int型にキャストできなければ 0 とみなす
+            return 0;
+        }
     }
 }

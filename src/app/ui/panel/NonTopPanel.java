@@ -68,4 +68,9 @@ public abstract class NonTopPanel extends JPanel {
      * addもこの関数内で行うこと
      */
     protected abstract void addConcreteComponent();
+
+    /**
+     * 具象クラスのコンポーネントに入力情報があれば全てクリアする
+     */
+    public abstract void clear();
 }

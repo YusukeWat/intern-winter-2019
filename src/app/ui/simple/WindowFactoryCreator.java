@@ -10,8 +10,9 @@ public class WindowFactoryCreator {
 
     /**
      * 引数に指定する文字列に応じたWindowFactoryクラスを取得する
-     * - "about": AboutWindowのFactoryクラス
-     * - "close": CloseWindowのFactoryクラス
+     * - "about"       : AboutWindowのFactoryクラス
+     * - "authfail"    : AuthFailWindowのFactoryクラス
+     * - "close"       : CloseWindowのFactoryクラス
      * - "construction": ConstructionWindowのFactoryクラス
      *
      * @param type 取得したいWindowFactoryクラスの種類
@@ -21,6 +22,8 @@ public class WindowFactoryCreator {
         switch (type) {
             case "about":
                 return new AboutWindowFactory();
+            case "authfail":
+                return new AuthFailWindowFactory();
             case "close":
                 return new CloseWindowFactory();
             case "construction":

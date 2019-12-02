@@ -8,6 +8,10 @@ import app.ui.panel.TransactionPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * ActionListenerの中継クラス
+ * ActionListenerで取得した情報をわかりやすい形に変形して上位に通知する
+ */
 public class ActionListenerRelay implements ActionListener {
 
     private ATMActionListener mListener;
@@ -79,7 +83,7 @@ public class ActionListenerRelay implements ActionListener {
     }
 
     /**
-     * ボタンが押されたときの状態を通知するリスナーメソッド
+     * ボタンが押されたときの状態を通知するリスナークラス
      */
     public interface ATMActionListener {
         /**
