@@ -10,7 +10,7 @@ public class TransactionPanel extends NonTopPanel {
 
     public static final String TAG = TransactionPanel.class.getSimpleName();
 
-    // ユーザ名を表示するラベル
+    // ユーザー名を表示するラベル
     private JLabel mUsernameLabel;
     // 取引額を入力するフィールド
     private JTextField mTransactionField;
@@ -62,21 +62,21 @@ public class TransactionPanel extends NonTopPanel {
     }
 
     /**
-     * 取引を行うユーザー名をセットする
-     *
-     * @param username 取引を行うユーザー名をセットする
-     */
-    public void setUsername(String username) {
-        this.mUsernameLabel.setText(username);
-    }
-
-    /**
      * 取引を行うユーザー名を取得する
      *
      * @return 取引を行うユーザー名
      */
     public String getUsername() {
         return mUsernameLabel.getText();
+    }
+
+    /**
+     * 取引を行うユーザー名をセットする
+     *
+     * @param username 取引を行うユーザー名をセットする
+     */
+    public void setUsername(String username) {
+        this.mUsernameLabel.setText(username);
     }
 
     /**

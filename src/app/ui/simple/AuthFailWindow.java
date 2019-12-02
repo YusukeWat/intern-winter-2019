@@ -3,6 +3,9 @@ package app.ui.simple;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * 認証の失敗を通知するウィンドウ
+ */
 public class AuthFailWindow extends SimpleWindow {
     @Override
     protected void addComponent() {

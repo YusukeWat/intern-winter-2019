@@ -1,7 +1,7 @@
 package app;
 
 /**
- * アカウントの情報を持つクラス
+ * アカウントのデータクラス
  */
 public class Account {
     private int id;

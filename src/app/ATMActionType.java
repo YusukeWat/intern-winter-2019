@@ -1,5 +1,8 @@
 package app;
 
+/**
+ * ATMの行動の種類
+ */
 public enum ATMActionType {
     WITHDRAW("お引出し"),
     DEPOSIT("お預かり"),

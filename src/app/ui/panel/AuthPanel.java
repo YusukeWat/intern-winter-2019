@@ -13,10 +13,6 @@ public class AuthPanel extends NonTopPanel {
     private JTextField mUserField;
     private JTextField mPassField;
 
-    /**
-     * eclipseのswingデザインツールを使用して構築したので、座標直打ち
-     * https://blog.goo.ne.jp/siyokuanjin/e/4c29a0e45c3890856175c76219ab2716
-     */
     public AuthPanel(ActionListener listener) {
         super(TAG, listener);
     }
@@ -55,6 +51,7 @@ public class AuthPanel extends NonTopPanel {
 
     /**
      * 入力されたユーザー名を取得する
+     *
      * @return ユーザー名
      */
     public String getUsername() {
@@ -63,6 +60,7 @@ public class AuthPanel extends NonTopPanel {
 
     /**
      * 入力されたパスワードを取得する
+     *
      * @return パスワード
      */
     public String getPassword() {

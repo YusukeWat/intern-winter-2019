@@ -3,6 +3,9 @@ package app.ui.simple;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * 準備中の機能をマスクするために表示するウィンドウ
+ */
 public class ConstructionWindow extends SimpleWindow {
     @Override
     protected void addComponent() {

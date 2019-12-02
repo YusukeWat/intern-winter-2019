@@ -83,7 +83,7 @@ public class ActionListenerRelay implements ActionListener {
     }
 
     /**
-     * ボタンが押されたときの状態を通知するリスナークラス
+     * ボタンが押されたときの状態を通知するリスナーインターフェース
      */
     public interface ATMActionListener {
         /**

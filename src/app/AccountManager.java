@@ -4,6 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * アカウント情報を管理するクラス
+ */
 public class AccountManager {
 
     private static final String ACCOUNT_FILE_PATH = "./res/csv/account.csv";
