@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 /**
  * アプリのトップ画面
  * ATMで行う行動を選択できる
+ * eclipseのswingデザインツールを使用して構築したので、座標直打ちになっている
+ * https://blog.goo.ne.jp/siyokuanjin/e/4c29a0e45c3890856175c76219ab2716
  */
 public class TopPanel extends JPanel {
 
@@ -24,123 +26,56 @@ public class TopPanel extends JPanel {
 
     public TopPanel(ActionListener listener) {
         this.mListener = listener;
-        // このパネル自体のレイアウトを設定する
-        // 画面を 左、中央、右 に3分割する
-        setLayout(new GridLayout(1, 3));
-        // 左、中央、右の順に用意しているパネルを追加する
-        add(getPanelOf(Position.LEFT));
-        add(getPanelOf(Position.CENTER));
-        add(getPanelOf(Position.RIGHT));
+        // デフォルトはFlowLayoutがセットされている
+        // 座標直打ちをするためにレイアウトマネージャは空にする
+        setLayout(null);
+        // コンポーネントをパネルに追加する
+        addComponent();
     }
 
     /**
-     * 引数に指定した位置のパネルを取得する
-     *
-     * @param position 左、中央、右のいずれか
-     * @return 引数に指定した位置のパネル
+     * コンポーネントをパネルに追加する
      */
-    private JPanel getPanelOf(Position position) {
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(2, 1));
-
-        switch (position) {
-            case LEFT:
-                addLeftComponent(panel);
-                break;
-            case CENTER:
-                addCenterComponent(panel);
-                break;
-            case RIGHT:
-                addRightComponent(panel);
-                break;
-        }
-
-        return panel;
-    }
-
-    /**
-     * 左用のコンポーネントを引数のパネルに追加する
-     *
-     * @param panel コンポーネントを追加するパネル
-     * @return コンポーネントを追加したパネル
-     */
-    private JPanel addLeftComponent(JPanel panel) {
-        // バグ埋めのヒント
-//        panel = new JPanel();
-        // お引出しボタンを定義する
-        JButton buttonWithdraw = createTopButton(ATMActionType.WITHDRAW);
-        // 残高照会ボタンを定義する
-        JButton buttonInquiry = createTopButton(ATMActionType.INQUIRY);
-
-        // パネルに上記コンポーネントを追加する
-        panel.add(buttonWithdraw);
-        panel.add(buttonInquiry);
-
-        return panel;
-    }
-
-    /**
-     * 中央用のコンポーネントを引数のパネルに追加する
-     *
-     * @param panel コンポーネントを追加するパネル
-     * @return コンポーネントを追加したパネル
-     */
-    private JPanel addCenterComponent(JPanel panel) {
-        // お預かりボタンを定義する
-        JButton buttonDeposit = createTopButton(ATMActionType.DEPOSIT);
-        // お振込みボタンを定義する
-        JButton buttonTransfer = createTopButton(ATMActionType.TRANSFER);
-
-        // パネルに上記コンポーネントを追加する
-        panel.add(buttonDeposit);
-        panel.add(buttonTransfer);
-
-        return panel;
-    }
-
-    /**
-     * 右用のコンポーネントを引数のパネルに追加する
-     *
-     * @param panel コンポーネントを追加するパネル
-     * @return コンポーネントを追加したパネル
-     */
-    private JPanel addRightComponent(JPanel panel) {
+    private void addComponent() {
+        // ボタンを定義する
+        JButton withdrawButton = createTopButton(ATMActionType.WITHDRAW, 40,  80);
+        JButton depositButton  = createTopButton(ATMActionType.DEPOSIT , 310, 80);
+        JButton inquiryButton  = createTopButton(ATMActionType.INQUIRY , 40,  310);
+        JButton transferButton = createTopButton(ATMActionType.TRANSFER, 310, 310);
         // 銀行名が書かれているラベルを定義する
-        JLabel labelBankName = new JLabel("　" + Application.BANK_NAME);
-        labelBankName.setFont(new Font("Serif", Font.BOLD, 42));
+        JLabel bankNameLabel = new JLabel("　" + Application.BANK_NAME);
+        bankNameLabel.setFont(new Font("Serif", Font.BOLD, 42));
+        bankNameLabel.setBounds(520, 140, 230, 60);
         // ATMのTOP画面に居そうな女性の画像ラベルを定義する
-        JLabel labelWoman = new JLabel(new ImageIcon(TOP_WOMAN_PATH));
+        JLabel womanLabel = new JLabel(new ImageIcon(TOP_WOMAN_PATH));
+        womanLabel.setBounds(540, 260, 200, 310);
 
-        // パネルに上記コンポーネントを追加する
-        panel.add(labelBankName);
-        panel.add(labelWoman);
-
-        return panel;
+        add(withdrawButton);
+        add(depositButton);
+        add(inquiryButton);
+        add(transferButton);
+        add(bankNameLabel);
+        add(womanLabel);
     }
 
     /**
-     * トップ画面に配置するボタンを生成する
+     * トップ画面に追加するボタンを生成する
      *
-     * @param type ボタンの種類
-     * @return トップ画面に配置するボタン
+     * @param actionType ボタンを押したときに行う行動の種類
+     * @param x          ボタンを配置するx座標
+     * @param y          ボタンを配置するy座標
+     * @return 生成されたJButton
      */
-    private JButton createTopButton(ATMActionType type) {
-        JButton button = new JButton(type.getButtonTitle());
+    private JButton createTopButton(ATMActionType actionType, int x, int y) {
+        JButton button = new JButton(actionType.getButtonTitle());
         // ボタンの文字のフォントを設定する
         button.setFont(ATMFrame.BUTTON_FONT);
+        // ボタンの配置を設定する
+        button.setBounds(x, y, 200, 150);
         // ボタンを押した時の処理を設定する
         button.addActionListener(mListener);
-        button.setActionCommand(TAG + type.toString());
+        button.setActionCommand(TAG + actionType.toString());
 
         return button;
-    }
-
-    /**
-     * トップ画面を縦に3分割した時のそれぞれの位置
-     */
-    private enum Position {
-        LEFT,
-        CENTER,
-        RIGHT
     }
 }
