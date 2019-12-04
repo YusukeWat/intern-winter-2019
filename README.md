@@ -1,5 +1,5 @@
 # intern-winter-2019
-# 【TEST】Takahashi
+# 【TEST】Takahashi MASAHITO
 
 ## テーマ
 　銀行のATMっぽいアプリ  
