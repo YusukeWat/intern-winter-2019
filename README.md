@@ -1,5 +1,5 @@
 # intern-winter-2019
-# 【TEST】Takahashi MASAHITOSATO
+# 【TEST】Takahashi MASAHITOSATO　HOSAKA
 
 ## テーマ
 　銀行のATMっぽいアプリ  
