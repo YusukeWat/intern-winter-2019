@@ -48,8 +48,9 @@ public class AccountManager {
             }
             bufferReader.close();
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
+            System.exit(0);
         }
     }
 
@@ -110,7 +111,7 @@ public class AccountManager {
                         break;
                 }
             } catch (IllegalArgumentException e){
-                e.printStackTrace();
+                System.out.println("引出し額が残高を上回ってしまった");
             }
         }
 
@@ -145,7 +146,7 @@ public class AccountManager {
 
             printWriter.close();
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
