@@ -169,7 +169,7 @@ public class ATMFrame extends MenuFrame implements ActionListenerRelay.ATMAction
         TransactionWindow window = TransactionWindow.getInstance();
         // transact関数の戻り値が -1 でないかチェックする
         // -1 でなければ、取引は成功したということ
-        if (afterAmount > 0) {
+        if (afterAmount >= 0) {
             mAccountManager.save();
             window.setAmount(afterAmount);
         } else {
