@@ -89,11 +89,11 @@ public class Account {
      *
      * @param amount 抜く金額
      * @return 抜いた後の残高
-     * @throws IllegalArgumentException 抜いた後に残高がマイナスになってしまう場合
+     *         抜く金額が残高より多い場合、-1を返す
      */
     public int decreasesAmount(int amount) throws IllegalArgumentException {
         if (this.amount < amount) {
-            throw new IllegalArgumentException();
+            return -1;
         }
 
         this.amount -= amount;
