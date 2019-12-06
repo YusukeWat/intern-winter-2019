@@ -26,14 +26,15 @@ public class AccountManager {
             FileInputStream fileInputStream = new FileInputStream(ACCOUNT_FILE_PATH);
             BufferedReader bufferReader = new BufferedReader(new InputStreamReader(fileInputStream));
 
-            // 読み込み行数の管理
-            int row = 0;
+            // 先頭行かどうかを判断するフラグ
+            boolean isFirstLine = true;
             // 読み込み行
             String line;
             // 1行ずつ読み込みを行う、読み込み行がなくなるまでループ
             while ((line = bufferReader.readLine()) != null) {
-                //先頭行は列名なので、データ保持しない
-                if (row != 0) {
+                // 先頭行は列名なので、データ保持しない
+                // 2行目以降からメモリ保持を行う
+                if (!isFirstLine) {
                     // カンマで分割した内容を配列に格納する
                     String[] splitData = line.split(",");
                     // 配列をデータクラスに変換する
@@ -43,13 +44,14 @@ public class AccountManager {
                     mAccountList.add(account);
                 }
                 //行数のインクリメント
-                row++;
+                isFirstLine = false;
 
             }
             bufferReader.close();
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
+            System.exit(0);
         }
     }
 
@@ -97,20 +99,14 @@ public class AccountManager {
                 continue;
             }
 
-            // 引出し額が残高より多い場合、例外をキャッチはするものの何もしない
-            // -1 で返すため
-            try {
-                // 引数のアクションタイプによって処理を変える
-                switch (actionType) {
-                    case WITHDRAW:
-                        after = account.decreasesAmount(transactionAmount);
-                        break;
-                    case DEPOSIT:
-                        after = account.addAmount(transactionAmount);
-                        break;
-                }
-            } catch (IllegalArgumentException e){
-                e.printStackTrace();
+            // 引数のアクションタイプによって処理を変える
+            switch (actionType) {
+                case WITHDRAW:
+                    after = account.decreasesAmount(transactionAmount);
+                    break;
+                case DEPOSIT:
+                    after = account.addAmount(transactionAmount);
+                    break;
             }
         }
 
@@ -145,7 +141,7 @@ public class AccountManager {
 
             printWriter.close();
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
