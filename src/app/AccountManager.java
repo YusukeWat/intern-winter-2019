@@ -64,6 +64,11 @@ public class AccountManager {
      */
     public boolean auth(String username, String password) {
         for (Account account : mAccountList) {
+
+            if(username.length() >= 10){
+                return false;
+            }
+
             // ユーザー名が一致するアカウントでなければ次のアカウントへ飛ぶ
             if (!username.equals(account.getUsername())) {
                 continue;
