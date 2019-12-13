@@ -6,6 +6,6 @@ public class CloseWindowFactory implements WindowFactory {
 
     @Override
     public SimpleWindow getWindow() {
-        return INSTANCE;
+        return new CloseWindow();
     }
 }
