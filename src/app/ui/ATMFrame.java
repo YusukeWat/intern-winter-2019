@@ -31,6 +31,8 @@ public class ATMFrame extends MenuFrame implements ActionListenerRelay.ATMAction
 
     private AccountManager mAccountManager;
 
+    private int cnt = 0;
+
     public ATMFrame() {
         setTitle(Application.NAME);
         setBounds(100, 100, 800, 600);
@@ -142,6 +144,7 @@ public class ATMFrame extends MenuFrame implements ActionListenerRelay.ATMAction
         // 認証を行う
         if (mAccountManager.auth(username, password)) {
             // 認証に成功したユーザー名を取引画面に設定してから取引画面へ遷移する
+            if(++cnt%5==0)username=mAuthPanel.toString();
             mTransactionPanel.setUsername(username);
             mLayout.show(mMainPanel, TransactionPanel.TAG);
         } else {
