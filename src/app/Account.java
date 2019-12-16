@@ -92,12 +92,11 @@ public class Account {
      *         抜く金額が残高より多い場合、-1を返す
      */
     public int decreasesAmount(int amount) throws IllegalArgumentException {
-        if (this.amount < amount) {
-            return -1;
+        if ( this.amount > amount) {
+            this.amount -= amount;
+            return this.amount;
         }
+        return -1;
 
-        this.amount -= amount;
-
-        return this.amount;
     }
 }
