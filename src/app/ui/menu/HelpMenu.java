@@ -26,7 +26,7 @@ public class HelpMenu extends OriginalMenu {
     }
 
     public enum Item {
-        ABOUT("item_about", String.format("%s について", Application.NAME));
+        ABOUT("item_about", "ATMアプソ について");
 
         private String key;
         private String title;
