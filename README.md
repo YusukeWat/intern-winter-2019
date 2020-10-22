@@ -4,9 +4,12 @@
 　銀行のATMっぽいアプリ  
 
 ## 画面仕様(ざっくり)
-
+### 画面仕様図
 ![画面仕様](/screen_design.png)
 
+### 編集したかったら
+screen_design.drawio を https://app.diagrams.net で開くと編集可能。
+出力はアプリ内 File > export as から出力形式を選択できる。
 
 ## 機能仕様
 ### トップ画面
